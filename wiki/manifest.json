@@ -1,0 +1,32 @@
+{
+  "schema_version": "1",
+  "repository": "error-pages",
+  "module": "github.com/tarampampam/error-pages",
+  "branch": "docs/generate-wiki",
+  "ref": "6d3ced4",
+  "source_revision": "6d3ced4",
+  "generated_at": "2026-09-04T07:07:12Z",
+  "options": {
+    "mode": "full",
+    "style": "technical",
+    "language": "English",
+    "analysis": "normal",
+    "citations": true,
+    "mermaid": false,
+    "archive_behavior": "preserve"
+  },
+  "pages": [
+    {"page_id": "repository-overview", "path": "pages/01-repository-overview.md", "source_files": ["README.md", "cmd/error-pages/main.go", "internal/cli/root.go", "internal/http/server.go"]},
+    {"page_id": "cli-and-configuration", "path": "pages/02-cli-and-configuration.md", "source_files": ["internal/cli/root.go", "internal/cli/serve/command.go", "internal/cli/serve/flags.go", "internal/cli/build/command.go", "internal/cli/healthcheck/command.go", "internal/cli/version/command.go", "internal/config/config.go", "internal/env/env.go", "internal/options/errorpage.go", "error-pages.yml", "schemas/config/1.0.schema.json"]},
+    {"page_id": "http-routing-and-request-flow", "path": "pages/03-http-routing-and-request-flow.md", "source_files": ["internal/http/server.go", "internal/http/common/middlewares.go", "internal/http/handlers/index/handler.go", "internal/http/handlers/errorpage/handler.go", "internal/http/handlers/notfound/handler.go", "internal/http/core/errorpage.go", "internal/http/core/headers.go"]},
+    {"page_id": "response-formats-and-error-contracts", "path": "pages/04-response-formats-and-error-contracts.md", "source_files": ["internal/http/core/errorpage.go", "internal/http/core/formats.go", "internal/http/core/headers.go", "error-pages.yml", "test/hurl/index.hurl", "test/hurl/x_code.hurl", "test/hurl/code_502_default.hurl", "test/hurl/code_502_json.hurl", "test/hurl/code_502_xml.hurl", "test/hurl/proxy_headers.hurl"]},
+    {"page_id": "template-rendering-and-localization", "path": "pages/05-template-rendering-and-localization.md", "source_files": ["internal/tpl/render.go", "internal/tpl/properties.go", "internal/tpl/hasher.go", "templates/l7-light.html", "templates/noise.html", "l10n/readme.md", "l10n/l10n.js"]},
+    {"page_id": "template-selection", "path": "pages/06-template-selection.md", "source_files": ["internal/cli/serve/command.go", "internal/cli/serve/flags.go", "internal/pick/picker.go", "internal/config/config.go"]},
+    {"page_id": "static-page-generation", "path": "pages/07-static-page-generation.md", "source_files": ["internal/cli/build/command.go", "internal/cli/build/history.go", "internal/tpl/render.go", "Dockerfile", ".github/workflows/tests.yml"]},
+    {"page_id": "operational-endpoints-and-observability", "path": "pages/08-operational-endpoints-and-observability.md", "source_files": ["internal/http/server.go", "internal/http/common/middlewares.go", "internal/http/handlers/healthz/handler.go", "internal/http/handlers/metrics/handler.go", "internal/http/handlers/version/handler.go", "internal/checkers/live.go", "internal/checkers/health.go", "internal/metrics/metrics.go", "internal/metrics/registry.go", "test/hurl/healthz.hurl", "test/hurl/metrics.hurl", "test/hurl/version.hurl"]},
+    {"page_id": "container-and-release-delivery", "path": "pages/09-container-and-release-delivery.md", "source_files": ["Dockerfile", "docker-compose.yml", ".github/workflows/release.yml", "Makefile"]},
+    {"page_id": "tests-and-ci-verification", "path": "pages/10-tests-and-ci-verification.md", "source_files": [".github/workflows/tests.yml", "Makefile", "test/hurl/404.hurl", "test/hurl/index.hurl", "test/hurl/x_code.hurl", "test/hurl/code_502_json.hurl", "test/hurl/code_502_xml.hurl", "internal/config/config_test.go", "internal/http/server_test.go"]},
+    {"page_id": "repository-map-and-extension-points", "path": "pages/11-repository-map-and-extension-points.md", "source_files": ["README.md", "go.mod", "error-pages.yml", "schemas/config/1.0.schema.json", "templates/readme.md", "l10n/readme.md", "internal/config/config.go", "internal/http/server.go", "internal/tpl/render.go"]}
+  ],
+  "archive": []
+}
