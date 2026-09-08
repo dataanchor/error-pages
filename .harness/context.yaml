@@ -1,0 +1,45 @@
+# Harness knowledge file. Update when architecture or workflow changes.
+# Task -> documents routing. Tier 1 is always loaded; load Tier 2/3 on demand.
+
+tier1_always_loaded:
+  - AGENTS.md
+  - .harness/service.yaml
+  - .harness/context.yaml
+
+tier2_task_routed:
+  - when: "understand overall architecture / component boundaries"
+    read: [ARCHITECTURE.md, wiki/pages/01-repository-overview.md]
+  - when: "trace an HTTP request / add or change a route / middleware"
+    read: [wiki/pages/03-http-routing-and-request-flow.md, internal/http/server.go, internal/http/core/errorpage.go]
+  - when: "change CLI flags, env vars, or config parsing"
+    read: [wiki/pages/02-cli-and-configuration.md, internal/cli/serve/flags.go, internal/env/env.go, internal/config/config.go]
+  - when: "response format, status codes, headers, error contract"
+    read: [wiki/pages/04-response-formats-and-error-contracts.md, internal/http/core/formats.go, internal/http/core/headers.go, schemas/config/1.0.schema.json, test/hurl/]
+  - when: "template rendering, template functions/tokens, localization"
+    read: [wiki/pages/05-template-rendering-and-localization.md, internal/tpl/render.go, internal/tpl/properties.go, l10n/readme.md]
+  - when: "template selection / picker behavior"
+    read: [wiki/pages/06-template-selection.md, internal/pick/picker.go, internal/cli/serve/command.go]
+  - when: "static page generation (build command / Docker asset tree)"
+    read: [wiki/pages/07-static-page-generation.md, internal/cli/build/command.go, Dockerfile]
+  - when: "healthz / metrics / version endpoints, observability"
+    read: [wiki/pages/08-operational-endpoints-and-observability.md, internal/http/common/middlewares.go, internal/metrics/metrics.go]
+  - when: "Docker image, build args, release pipeline"
+    read: [wiki/pages/09-container-and-release-delivery.md, Dockerfile, .github/workflows/release.yml]
+  - when: "running tests, CI expectations, integration (Hurl) suite"
+    read: [docs/development.md, wiki/pages/10-tests-and-ci-verification.md, .github/workflows/tests.yml, Makefile]
+  - when: "adding a template, format, or endpoint (extension points)"
+    read: [wiki/pages/11-repository-map-and-extension-points.md]
+  - when: "local development / build / lint / run commands"
+    read: [docs/development.md]
+
+tier3_specialized:
+  - path: wiki/
+    note: "Full generated wiki (11 pages + manifest.json). Authoritative deep dive; generated at ref 6d3ced4."
+  - path: CHANGELOG.md
+    note: "Release history."
+  - path: .harness/analysis-report.md
+    note: "Findings, confidence levels, and items needing human confirmation from harness bootstrap."
+
+notes:
+  - "No nested AGENTS.md files: the Go tree is uniform (same toolchain, test style, lint config)."
+  - "l10n/ is JavaScript with its own ESLint config but is small and single-purpose; covered by wiki page 05."
